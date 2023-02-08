@@ -3,7 +3,7 @@
 let searchedDrink = '20th Century';
 
 //At the moment this gets many cocktails.
-const Settings = {
+const cocktailSettings = {
     default : {
         "async": true,
         "crossDomain": true,
@@ -27,9 +27,13 @@ const Settings = {
 
 };
 
-let currentSetting = Settings.search;
+let currentSetting = cocktailSettings.search;
 
 
 $.ajax(currentSetting).done(function (response) {
 	console.log(response);
 });
+
+function updateDashboard(){
+
+}

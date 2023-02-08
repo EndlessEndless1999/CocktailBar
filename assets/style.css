@@ -1,0 +1,22 @@
+
+
+
+
+
+
+
+
+
+.dashboard {
+    background-color: black;
+    color: white;
+    height: 250px;
+    width: 250px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    'Ingredients Title Allergies'
+    'Ingredients Title Allergies'
+    ;
+}
