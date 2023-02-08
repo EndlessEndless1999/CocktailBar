@@ -1,6 +1,7 @@
 
 
 let searchedDrink = '20th Century';
+let drinkResults;
 
 //At the moment this gets many cocktails.
 const Settings = {
