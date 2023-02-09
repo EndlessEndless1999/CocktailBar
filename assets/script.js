@@ -1,6 +1,9 @@
 
 
 let searchedDrink = '20th Century';
+let drinkResults;
+
+const dashBoard = [$()];
 
 //At the moment this gets many cocktails.
 const cocktailSettings = {
