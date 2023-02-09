@@ -4,6 +4,12 @@ let searchedDrink = '20th Century';
 let ingredient = 'milk';
 let drinkResults;
 
+let barSearch;
+let latitude;
+let longitude;
+
+let userAdress = '44 Cheapside Brighton BN1 4GD';
+
 //At the moment this gets many cocktails.
 const Settings = {
     default : {
@@ -51,10 +57,22 @@ const localBusinessSettings = {
     }
 }
 
+const addressSettings = {
+    adrToCoordinates: {"async": true,
+	"crossDomain": true,
+	"url": "https://address-from-to-latitude-longitude.p.rapidapi.com/geolocationapi?address=" + userAdress,
+	"method": "GET",
+	"headers": {
+		"X-RapidAPI-Key": "776d092347msh3e7fd81bb3c4eaap19f0c5jsn6f3d75095a68",
+		"X-RapidAPI-Host": "address-from-to-latitude-longitude.p.rapidapi.com"
+	}}
+}
+
 //Stores which setting is selected
 let currentSetting = Settings.search;
 let currentAllergenSetting = allergenAPISettings.parser;
 let currentBusinessSetting = localBusinessSettings.search;
+let currentAddressSetting = addressSettings.adrToCoordinates;
 
 function callAPI(){
     $.ajax(currentSetting).then(function (response) {
@@ -69,6 +87,15 @@ function callAllergenAPI(){
 }
 
 function callBusinessAPI(){
-
+    $.ajax(currentBusinessSetting).then(function(response){
+        console.log(response);
+    })
 }
+
+function callAddressAPI(){
+    $.ajax(currentAddressSetting).then(function(response){
+        console.log(response);
+    })
+}
+
 
