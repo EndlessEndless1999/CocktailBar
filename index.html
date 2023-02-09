@@ -13,7 +13,7 @@
 <body>
     <!-- logo/ nav bar -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
             <div class="container" id="navbarcontainer"> 
                 <a href="#" class="d-inline-block" class="navbar-brand mb-0 h1">Navbar</a>
                 <button
@@ -29,10 +29,25 @@
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active"><a href="#" class="nav-link">Button 1</a></li>
-                    <li class="nav-item active"><a href="#" class="nav-link">Button 2</a></li>
-                    <li class="nav-item active"><a href="#" class="nav-link">Button 3</a></li>
-                    <li class="nav-item active"><a href="#" class="nav-link">Button 4</a></li>
+                    <li class="nav-item active"><a href="#" class="nav-link active">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" 
+                        id="navbarDropdown" 
+                        role="button" 
+                        data-toggle="dropdown" 
+                        aria-expanded="false">
+                        Favourites</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a href="#"
+                            class="dropdown-item">Based on recents</a></li>
+                            <li><a href="#"
+                            class="dropdown-item">Based on allergens</a></li>
+                            <li><a href="#"
+                            class="dropdown-item">Try in local bar</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item active"><a href="#" class="nav-link">Dashboard</a></li>
+                    <li class="nav-item active"><a href="#" class="nav-link">About</a></li>
                 </ul>
             </div>
         </div>
