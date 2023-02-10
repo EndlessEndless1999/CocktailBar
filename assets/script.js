@@ -104,15 +104,19 @@ function test(){
     callAddressAPI();
 }
 
-//test();
+displayDrinkInfo();
+
+function displayDrinkInfo(){
+    $.ajax(Settings.search).done(function (response) {
+        console.log(response);
+        response.forEach(function(drink){
+            displayDrinkAmount(drink);
+        })
+    });
+}
 
 
-$.ajax(Settings.default).done(function (response) {
-	console.log(response);
-    response.forEach(function(drink){
-        displayDrinkAmount(drink)
-    })
-});
+
 
 function displayDrinkAmount(drink){
     var drinks = $(".drinks")
@@ -121,7 +125,7 @@ function displayDrinkAmount(drink){
         drinks.append (`
     <p>${ingredient.amount} of ${ingredient.ingredient.name}
     </p>
-    `    )
+    `)
     });
 }
 ;
