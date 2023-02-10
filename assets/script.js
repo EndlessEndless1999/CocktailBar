@@ -1,5 +1,4 @@
 
-
 let searchedDrink = '20th Century';
 let ingredient = 'milk';
 let drinkResults;
@@ -106,4 +105,21 @@ function test(){
 }
 
 //test();
+$.ajax(settings).done(function (response) {
+	console.log(response);
+    response.forEach(function(drink){
+        displayDrinkAmount(drink)
+    })
+});
 
+function displayDrinkAmount(drink){
+    var drinks = $(".drinks")
+    drink.ingredients.forEach(ingredient => {
+        console.log(ingredient.amount, ingredient.ingredient.name)
+        drinks.append (`
+    <p>${ingredient.amount} of ${ingredient.ingredient.name}
+    </p>
+    `    )
+    });
+}
+;
