@@ -18,9 +18,7 @@
     box-sizing: content-box;
 }
 
-    
 
-}
 .logo {
         color: #DA7B93;
         font-size: 35px;
@@ -29,6 +27,7 @@
         float: left;
         padding-top: 10px;
 }
+
 h1 {
     font-size: 50px;
     font-family: arial;
