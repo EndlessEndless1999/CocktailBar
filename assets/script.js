@@ -105,7 +105,9 @@ function test(){
 }
 
 //test();
-$.ajax(settings).done(function (response) {
+
+
+$.ajax(Settings.default).done(function (response) {
 	console.log(response);
     response.forEach(function(drink){
         displayDrinkAmount(drink)
