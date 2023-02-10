@@ -4,9 +4,9 @@ let searchedDrink = '20th Century';
 let ingredient = 'milk';
 let drinkResults;
 
-let barSearch;
-let latitude;
-let longitude;
+let barSearch = 'bar';
+let latitude = '50.82953728381789';
+let longitude = '-0.13721928010098072';
 
 let userAdress = '44 Cheapside Brighton BN1 4GD';
 
@@ -98,4 +98,12 @@ function callAddressAPI(){
     })
 }
 
+function test(){
+    callAPI();
+    callAllergenAPI();
+    callBusinessAPI();
+    callAddressAPI();
+}
+
+//test();
 
