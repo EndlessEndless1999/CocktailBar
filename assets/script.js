@@ -104,7 +104,6 @@ function test(){
     callAddressAPI();
 }
 
-displayDrinkInfo();
 
 function displayDrinkInfo(){
     $.ajax(Settings.search).done(function (response) {
