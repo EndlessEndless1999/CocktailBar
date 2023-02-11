@@ -9,6 +9,19 @@ let longitude = '-0.13721928010098072';
 
 let userAdress = '44 Cheapside Brighton BN1 4GD';
 
+//Variables for animating the website
+const animatedElements = document.querySelectorAll('.hidden');
+//Observes what elements are in view of the browser
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+});
+
+animatedElements.forEach((el) => observer.observe(el));
+
 //At the moment this gets many cocktails.
 const Settings = {
     default : {
@@ -128,3 +141,7 @@ function displayDrinkAmount(drink){
     });
 }
 ;
+
+function scrollAnimate(){
+
+}

@@ -104,15 +104,18 @@ h1 {
  .img {
     position: relative;
     bottom: 75px;
+    left: 75px;
  }
 
  .shadow {
     box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.8);
 }
 
+
  .heroHeader {
     position: relative;
     bottom: 40px;
+
  }
 
  .gridcontainer {
@@ -136,4 +139,19 @@ h1 {
  .navbar {
     display: flex;
     align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, var(--primary), var(--quaternary));
+ }
+
+ .hidden {
+    opacity: 0;
+    filter: blur(7px);
+    transform: translateX(-100%);
+    transition: all 1s;
+ }
+
+ .show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0%);
  }
