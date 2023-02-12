@@ -22,6 +22,27 @@ const observer = new IntersectionObserver((entries) => {
 
 animatedElements.forEach((el) => observer.observe(el));
 
+//DUMMY Variables for Testing!!
+
+let drink = {
+    name: 'Margarita',
+    description: 'Tequila and triple sec combine in this fabulous margarita cocktail recipe, mixed with lime juice. Garnish the rim of the glass with salt for that extra punch.',
+    ingredients: {
+        one: '50ml Tequila Reposado',
+        two: '25ml Lime Juice',
+        three: '20ml Triple Sec'
+    },
+    garnish: {
+        one: 'Salt',
+        two: '2 Lime Wedges'
+    },
+    method: {
+        one: 'Sprinkle a few teaspoons of salt over the surface of a small plate or saucer. Rub one wedge of lime along the rim of a tumbler and then dip it into the salt so that the entire rim is covered.',
+        two: 'Fill a cocktail shaker with ice, then add the tequila, lime juice and triple sec. Shake until the outside of the shaker feels cold.',
+        three: 'Strain the mix into the prepared glass over fresh ice. Serve with a wedge of lime.'
+    }
+}
+
 //At the moment this gets many cocktails.
 const Settings = {
     default : {
@@ -37,7 +58,7 @@ const Settings = {
     search : {
         "async": true,
 	    "crossDomain": true,
-	    "url": "https://drinks-digital1.p.rapidapi.com/v1/cocktails/search?query=" + searchedDrink + "&limit=20",
+	    "url": "https://drinks-digital1.p.rapidapi.com/v1/cocktails/search?query=" + searchedDrink + "&limit=1",
 	    "method": "GET",
 	    "headers": {
 		    "X-RapidAPI-Key": "776d092347msh3e7fd81bb3c4eaap19f0c5jsn6f3d75095a68",
@@ -117,6 +138,13 @@ function test(){
     callAddressAPI();
 }
 
+$('.button').on('click', function(){
+    generateDrink();
+})
+
+function generateDrink(){
+    
+}
 
 function displayDrinkInfo(){
     $.ajax(Settings.search).done(function (response) {
@@ -126,9 +154,6 @@ function displayDrinkInfo(){
         })
     });
 }
-
-
-
 
 function displayDrinkAmount(drink){
     var drinks = $(".drinks")
