@@ -11,7 +11,7 @@ let userAdress = '44 Cheapside Brighton BN1 4GD';
 
 //Variables for animating the website
 const animatedElements = document.querySelectorAll('.hidden');
-//Observes what elements are in view of the browser
+//Observes what elements are in view of the browser and animates if they are!
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting){
@@ -141,7 +141,3 @@ function displayDrinkAmount(drink){
     });
 }
 ;
-
-function scrollAnimate(){
-
-}
