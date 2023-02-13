@@ -148,11 +148,12 @@ h1 {
     height: 100%;
     grid-area: mytable;
     display: grid;
-    background-color: var(--teritary);
+    background-color: var(--secondary);
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
     'name ingredients steps '
     ;
+    border-radius: 7% 7% 7% 7%;
  }
  .space {
     grid-area: space1;
@@ -180,7 +181,42 @@ h1 {
     grid-area: steps;
  }
 
+ .cocktailH2 {
+    color: white;
+    background-color: var(--teritary);
+    position: relative;
+    top: 2%;
+    text-align: center;
+ }
 
+ .ingredientsH2 {
+    color: white;
+    background-color: var(--teritary);
+    position: relative;
+    top: 2%;
+    text-align: center;
+ }
+
+ .stepsH2 {
+    color: white;
+    background-color: var(--teritary);
+    position: relative;
+    top: 2%;
+    text-align: center;
+ }
+
+ .hide {
+    display: none;
+ }
+
+ .waitDisplay {
+    position: relative;
+    top: 325px;
+    color: white;
+    font-size:50px;
+    text-align: center;
+    grid-area: ingredients;
+ }
 
  #main {
     grid-area: Main;
@@ -192,6 +228,19 @@ h1 {
     justify-content: center;
     background-image: linear-gradient(to bottom, var(--primary), var(--quaternary));
  }
+
+ .list-group{
+    max-height: 1000px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.list-group-item {
+    padding: 30px 10px;
+    color: white;
+    background-color: var(--primary);
+}
 
  .hidden {
     opacity: 0;

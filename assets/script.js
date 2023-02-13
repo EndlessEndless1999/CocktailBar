@@ -143,7 +143,10 @@ $('.button').on('click', function(){
 })
 
 function generateDrink(){
-    
+    $('.waitDisplay').addClass('hide');
+    $('.name').removeClass('hide');
+    $('.ingredients').removeClass('hide');
+    $('.steps').removeClass('hide');
 }
 
 function displayDrinkInfo(){
