@@ -42,6 +42,12 @@ h1 {
     text-align: justify;
     color: white;
 }
+
+.favTitle {
+   color: white;
+   font-family: arial;
+}
+
 .par {
     font-size: 20px;
     text-align: left;
@@ -104,6 +110,13 @@ h1 {
     left: 75px;
 }
 
+.favouritesBadge {
+   font-size: 40px;
+   text-align: center;
+   position: relative;
+   left: 120px;
+}
+
 .button {
     margin: 0.5em;
     border-radius: 50%;
@@ -116,6 +129,34 @@ h1 {
     cursor: pointer;
     transition: 0.2s ease-in-out;
 }
+
+.favouriteDrinksTable {
+   height: 75%;
+   width: 50%;
+}
+
+.circle {
+   height: 400px;
+   width: 400px;
+   background-color: var(--teritary);
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   transition: all 1s;
+}
+
+.c2 {
+   height: 350px;
+   width: 350px;
+   border: solid white 1px;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
 .cn {
     border: none;
     outline: none;
@@ -162,7 +203,11 @@ h1 {
  }
 
  .favouritesContainer {
+   background-color: var(--quaternary);
    grid-area: Favourites;
+   display: flex;
+   align-items: center;
+   justify-content: center;
  }
 
  .footer {
@@ -282,6 +327,7 @@ h1 {
     padding: 30px 10px;
     color: white;
     background-color: var(--primary);
+    text-align: center;
 }
 
  .hidden {
@@ -289,6 +335,10 @@ h1 {
     filter: blur(7px);
     transform: translateX(-100%);
     transition: all 1s;
+ }
+
+ #favouritesList {
+   transform: translateX(-175px);
  }
 
  .show {

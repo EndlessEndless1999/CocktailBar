@@ -190,7 +190,18 @@ function returnText() {
   alert(input)
 }
 
+$('.circle').on('click', function(){
+    for(let i = 0; i < favouriteDrinks.length; i++){
+        let d = document.createElement('li');
+        d.classList.add('list-group-item');
+        d.innerHTML = favouriteDrinks[i];
+        $('#favouritesList').append(d);
+    }
+    $('.favouriteDrinksTable').removeClass('hide');
+    $('.circle').addClass('hidden');
 
+
+})
 
 // Basic object syntax
 const person = {
