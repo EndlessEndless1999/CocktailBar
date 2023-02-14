@@ -9,6 +9,101 @@ let longitude = '-0.13721928010098072';
 
 let userAdress = '44 Cheapside Brighton BN1 4GD';
 
+let sampleObject = [
+    {
+      id: "ea43ffb8500c4bc8a32faffa",
+      spirit_id: "gin",
+      cocktail_name: "20th Century",
+      description: "The 20th Century Cocktail made with gin, Lillet blanc, white creme de cacao and lemon juice. According to the book \"Cafe Royal Cocktail Book\" by William J. Tarling, The cocktail was created by British bartender C.A. Tuck and named for the luxurious 20th Century Limited passenger train that ran between New York City and Chicago from 1902 to 1967.",
+      additional_tips: "",
+      alcoholic: true,
+      garnish: "lemon twist",
+      ingredients: [
+        {
+          list_order: 1,
+          amount: "1 1/2 ounces (45ml)",
+          ingredient: {
+            name: "gin",
+            description: "Gin is a distilled alcoholic drink that derives its predominant flavor from juniper berries.",
+            id: "gin"
+          }
+        },
+        {
+          list_order: 2,
+          amount: "1/2 ounce (15ml)",
+          ingredient: {
+            name: "Lillet blanc",
+            description: "Lillet is a French wine-based aperitif from Podensac. Classed as an aromatised wine Lillet Blanc a sweeter variant of the white-wine-based version with reduced quinine content.",
+            id: "lilletblanc"
+          }
+        },
+        {
+          list_order: 3,
+          amount: "1/2 ounce (15ml)",
+          ingredient: {
+            name: "white creme de cacao",
+            description: "Crème de Cacao is a sweet alcoholic liqueur (chocolate bean) flavored liqueur, often scented with a hint of vanilla. It is different from chocolate liqueur, which is usually sweeter and more syrupy. It comes in 2 varieties, dark and white.",
+            id: "whitecremedecacao"
+          }
+        },
+        {
+          list_order: 4,
+          amount: "3/4 ounce (22.5ml)",
+          ingredient: {
+            name: "lemon juice",
+            description: "Lemon juice is made from freshly squeezed lemons.",
+            id: "lemonjuice"
+          }
+        }
+      ],
+      steps: [
+        {
+          step: 1,
+          "instructions": "Add the gin, Lillet blanc, white creme de cacao and lemon juice to a shaker with ice and shake until well-chilled."
+        },
+        {
+          step: 2,
+          instructions: "Fine-strain into a chilled coupe."
+        },
+        {
+          step: 3,
+          instructions: "Garnish with a lemon twist."
+        }
+      ],
+      glasses: [
+        {
+          list_order: 1,
+          glass: {
+            name: "Champagne Saucer (Coupe)",
+            description: "The Champagne saucer is also called a coupe glass. With a flatter, rounder bowl, it is a more traditional glass design for serving sparkling wines. It holds around 6 to 8 ounces.",
+            image_url: "https://rapid.drinks.digital/static/coupe.png",
+            id: "coupe"
+          }
+        },
+        {
+          list_order: 2,
+          glass: {
+            name: "Cocktail (or Martini) Glass",
+            description: "The familiar conical shape of the cocktail glass makes most people think of a martini. Cocktail glasses are used for drinks between 3 and 6 ounces. Cocktail glasses are also a good alternative to margarita glasses.",
+            image_url: "https://rapid.drinks.digital/static/cocktail.png",
+            id: "cocktail"
+          }
+        }
+      ],
+      tags: [
+        {
+          list_order: 1,
+          tag: {
+            id: "dessert",
+            name: "Dessert Cocktails"
+          }
+        }
+      ],
+      created_at: "2022-12-04T02:31:08.290136+00:00",
+      updated_at: null
+    }
+  ]
+
 //Variables for animating the website
 const animatedElements = document.querySelectorAll('.hidden');
 //Observes what elements are in view of the browser and animates if they are!
@@ -19,6 +114,12 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 });
+
+//Tooltips Scripting
+const tooltips = document.querySelectorAll('.tt');
+tooltips.forEach(t => {
+    new bootstrap.Tooltip(t);
+})
 
 animatedElements.forEach((el) => observer.observe(el));
 
@@ -218,3 +319,6 @@ const person = {
   addEventListener('click', (event) => {});
 
   onclick = (event) => { };
+
+
+  callAPI();

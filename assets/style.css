@@ -330,6 +330,10 @@ h1 {
     text-align: center;
 }
 
+.tt {
+   z-index: 1;
+}
+
  .hidden {
     opacity: 0;
     filter: blur(7px);
