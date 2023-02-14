@@ -59,7 +59,7 @@ let sampleObject = [
       steps: [
         {
           step: 1,
-          "instructions": "Add the gin, Lillet blanc, white creme de cacao and lemon juice to a shaker with ice and shake until well-chilled."
+          instructions: "Add the gin, Lillet blanc, white creme de cacao and lemon juice to a shaker with ice and shake until well-chilled."
         },
         {
           step: 2,
@@ -116,10 +116,14 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 //Tooltips Scripting
-const tooltips = document.querySelectorAll('.tt');
-tooltips.forEach(t => {
+
+
+function updatePage(){
+    const tooltips = document.querySelectorAll('.tt');
+    tooltips.forEach(t => {
     new bootstrap.Tooltip(t);
 })
+}
 
 animatedElements.forEach((el) => observer.observe(el));
 
@@ -249,28 +253,68 @@ function generateDrink(){
     $('.ingredients').removeClass('hide');
     $('.steps').removeClass('hide');
     document.getElementById('display').scrollIntoView();
+    displayDrinkAmount(sampleObject[0]);
 }
 
-function displayDrinkInfo(){
-    $.ajax(Settings.search).done(function (response) {
-        console.log(response);
-        response.forEach(function(drink){
-            displayDrinkAmount(drink);
-        })
-    });
+function displayDrinkInfo(drink){
+    // $.ajax(Settings.search).done(function (response) {
+    //     console.log(response);
+    //     response.forEach(function(drink){
+    //         displayDrinkAmount(drink);
+    //     })
+    // });
+    var drinks = $("#cocktailList");
+
+    let name = drink.cocktail_name;
+    let description = drink.description;
+    let alcoholic = drink.alcoholic;
+    let garnish = drink.garnish;
+
+    drinks.append (`
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${name}">${name}
+    </li>
+    `);
+    drinks.append (`
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${description}">${description}
+    </li>
+    `);
+    drinks.append (`
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${alcoholic}">${alcoholic}
+    </li>
+    `);
+    drinks.append (`
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${garnish}">${garnish}
+    </li>
+    `);
+    updatePage();
+    displaySteps(sampleObject[0]);
 }
 
 function displayDrinkAmount(drink){
-    var drinks = $(".drinks")
+    var drinks = $("#ingredientsList");
     drink.ingredients.forEach(ingredient => {
         console.log(ingredient.amount, ingredient.ingredient.name)
         drinks.append (`
-    <p>${ingredient.amount} of ${ingredient.ingredient.name}
-    </p>
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${ingredient.ingredient.name}">${ingredient.amount} of ${ingredient.ingredient.name}
+    </li>
     `)
     });
+    updatePage();
+    displayDrinkInfo(sampleObject[0]);
 }
 ;
+
+function displaySteps(drink){
+    var drinks = $("#stepsList");
+    drink.steps.forEach(step => {
+        console.log(step.step, step.decription);
+        drinks.append (`
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${step.step}">${step.step}: ${step.instructions}
+    </li>
+    `)
+    });
+    updatePage();
+}
 // ***
 
 // create array to store favourite drinks
@@ -320,5 +364,3 @@ const person = {
 
   onclick = (event) => { };
 
-
-  callAPI();
