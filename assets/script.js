@@ -1,5 +1,5 @@
 
-let searchedDrink = '20th Century';
+let searchedDrink = '';
 let ingredient = 'milk';
 let drinkResults;
 
@@ -8,6 +8,8 @@ let latitude = '50.82953728381789';
 let longitude = '-0.13721928010098072';
 
 let userAdress = '44 Cheapside Brighton BN1 4GD';
+
+let results;
 
 let sampleObject = [
     {
@@ -149,7 +151,7 @@ let drink = {
 }
 
 //At the moment this gets many cocktails.
-const Settings = {
+let Settings = {
     default : {
         "async": true,
         "crossDomain": true,
@@ -243,9 +245,48 @@ function test(){
     callAddressAPI();
 }
 
-$('.button').on('click', function(){
+$('#searchButton').on('click', function(){
+    searchedDrink = $('#searchBar').val();
+    Settings.search.url = "https://drinks-digital1.p.rapidapi.com/v1/cocktails/search?query=" + searchedDrink + "&limit=1"
+    console.log(Settings.search.url);
+
     generateDrink();
 })
+
+$('#random').on('click', function(){
+    Settings.search.url = "https://drinks-digital1.p.rapidapi.com/v1/cocktails?limit=20"
+
+    generateRandomDrink();
+})
+
+function generateRandomDrink(){
+
+    $('#ingredientsList').empty();
+    $('#stepsList').empty();
+    $('#cocktailList').empty();
+
+
+
+    $('.waitDisplay').addClass('hide');
+    $('.name').removeClass('hide');
+    $('.ingredients').removeClass('hide');
+    $('.steps').removeClass('hide');
+    document.getElementById('display').scrollIntoView();
+
+    $.ajax(Settings.search).then(function (response) {
+        console.log(response);
+        i = getRandomArbitrary(1, 19);
+        console.log(i);
+        console.log(response[i]);
+        displayDrinkAmount(response[i]);
+    });
+}
+
+function getRandomArbitrary(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function generateDrink(){
 
@@ -260,7 +301,13 @@ function generateDrink(){
     $('.ingredients').removeClass('hide');
     $('.steps').removeClass('hide');
     document.getElementById('display').scrollIntoView();
-    displayDrinkAmount(sampleObject[0]);
+
+    $.ajax(Settings.search).then(function (response) {
+        console.log(response);
+        displayDrinkAmount(response[0]);
+    });
+
+
 }
 
 function displayDrinkInfo(drink){
@@ -294,12 +341,12 @@ function displayDrinkInfo(drink){
     </li>
     `);
     updatePage();
-    displaySteps(sampleObject[0]);
+    displaySteps(drink);
 }
 
-function displayDrinkAmount(drink){
+function displayDrinkAmount(response){
     var drinks = $("#ingredientsList");
-    drink.ingredients.forEach(ingredient => {
+    response.ingredients.forEach(ingredient => {
         console.log(ingredient.amount, ingredient.ingredient.name)
         drinks.append (`
     <li class = "list-group-item tt" data-bs-placement = "top" title= "${ingredient.ingredient.name}">${ingredient.amount} of ${ingredient.ingredient.name}
@@ -307,7 +354,7 @@ function displayDrinkAmount(drink){
     `)
     });
     updatePage();
-    displayDrinkInfo(sampleObject[0]);
+    displayDrinkInfo(response);
 }
 ;
 
@@ -325,7 +372,7 @@ function displaySteps(drink){
 // ***
 
 // create array to store favourite drinks
-const favouriteDrinks = ["Margarita", "Amaretto"]
+const favouriteDrinks = ["Margarita", "Espresso Martini"]
 console.log(favouriteDrinks);
 
 // add localStorage 
@@ -347,6 +394,15 @@ $('.circle').on('click', function(){
         let d = document.createElement('li');
         d.classList.add('list-group-item');
         d.innerHTML = favouriteDrinks[i];
+        d.addEventListener('click', function(){
+        searchedDrink = d.innerHTML;
+
+        Settings.search.url = "https://drinks-digital1.p.rapidapi.com/v1/cocktails/search?query=" + searchedDrink + "&limit=1"
+        console.log(Settings.search.url);
+
+        generateDrink();
+        })
+
         $('#favouritesList').append(d);
     }
     $('.favouriteDrinksTable').removeClass('hide');
@@ -370,4 +426,5 @@ const person = {
   addEventListener('click', (event) => {});
 
   onclick = (event) => { };
-
+  
+  callAPI();
