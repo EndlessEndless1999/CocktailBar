@@ -168,34 +168,8 @@ function displayDrinkAmount(drink){
     </p>
     `)
     });
-};
-
-let favorites = JSON.parse(localStorage.getItem('favouriteDrinks')) || [];
-
-favorites.forEach(function(favorite) {
-    document.getElementById(favorite).className = 'fav';
-});
-// register click event listener
-document.querySelector('.list').addEventListener('click', function(e) {
-  var id = e.target.id,
-      item = e.target,
-      index = favorites.indexOf(id);
-  // return if target doesn't have an id 
-  if (!id) return;
-  // item is not favorite
-  if (index == -1) {
-    favorites.push(id);
-    item.className = 'fav';
-  // item is already favorite
-  } else {
-    favorites.splice(index, 1);
-    item.className = '';
-  }
-  // store array in local storage
-localStorage.setItem('favorites', JSON.stringify(favorites));
-});
-
-
+}
+;
 // ***
 
 // create array to store favourite drinks
@@ -211,12 +185,28 @@ window.localStorage.getItem('favouriteDrinks');
 let input = localStorage.getItem('favouriteDrinks')
 
 function returnText() {
-    input = document.getElementById("favouriteDrinks").value
-    localStorage.setItem('favouriteDrinks', input)
-    alert(input)
+  input = document.getElementById("favouriteDrinks").value
+  localStorage.setItem('favouriteDrinks', input)
+  alert(input)
 }
 
+$('.circle').on('click', function(){
+    for(let i = 0; i < favouriteDrinks.length; i++){
+        let d = document.createElement('li');
+        d.classList.add('list-group-item');
+        d.innerHTML = favouriteDrinks[i];
+        $('#favouritesList').append(d);
+    }
+    $('.favouriteDrinksTable').removeClass('hide');
+    $('.circle').addClass('hidden');
+})
 
+// Favorite button 
+let favButton = document.querySelector('.favButton');
+
+favButton.addEventListener('click', () => {
+    favButton.classList.toggle('active');
+})
 
 
 // Basic object syntax
