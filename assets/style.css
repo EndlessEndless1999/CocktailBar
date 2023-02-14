@@ -14,6 +14,10 @@
     --quinary: #1c3334;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .selector-for-some-widget {
     box-sizing: content-box;
 }
@@ -73,6 +77,33 @@ h1 {
     cursor: pointer;
     transition: 0.4s ease-in-out;
 }
+
+.badge {
+    background-color: var(--quaternary);
+    color: white;
+}
+
+.cocktailBadge {
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+    left: 70px;
+}
+
+.ingredientsBadge {
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+    left: 30px;
+}
+
+.stepsBadge {
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+    left: 75px;
+}
+
 .button {
     margin: 0.5em;
     border-radius: 50%;
@@ -101,11 +132,156 @@ h1 {
     color: white;
  }
 
+ .img {
+    position: relative;
+    bottom: 75px;
+    left: 75px;
+ }
+
+ .shadow {
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.8);
+}
+
+
+ .heroHeader {
+    position: relative;
+    bottom: 40px;
+
+ }
+
  .gridcontainer {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    'Hero Hero Hero Hero'
+    'Main Main Main Main'
+    ;
+ }
+
+ .body {
+    grid-area: Hero;
+ }
+
+ .drinks {
+    background-color: var(--quaternary);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    'space1 mytable mytable mytable mytable mytable space2'
+    'space1 mytable mytable mytable mytable mytable space2'
+    ;
+ }
+
+ .displayTable {
+    width: 100%;
+    height: 100%;
+    grid-area: mytable;
+    display: grid;
+    background-color: var(--quaternary);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+    'name ingredients steps '
+    ;
+    border-radius: 7% 7% 0% 0%;
+ }
+ .space {
+    grid-area: space1;
+    background-color: #376e6f;
+    width: 100%;
+    height: 100%;
+ }
+
+ .space2 {
+    grid-area: space2;
+    background-color: #376e6f;
+    width: 100%;
+    height: 100%;
+ }
+
+ .name {
+    grid-area: name;
+ }
+
+ .ingredients {
+    grid-area: ingredients;
+ }
+
+ .steps {
+    grid-area: steps;
+ }
+
+ .cocktailH2 {
+    color: white;
+    background-color: var(--teritary);
+    position: relative;
+    top: 2%;
+    text-align: center;
+ }
+
+ .ingredientsH2 {
+    color: white;
+    background-color: var(--teritary);
+    position: relative;
+    top: 2%;
+    text-align: center;
+ }
+
+ .stepsH2 {
+    color: white;
+    background-color: var(--teritary);
+    position: relative;
+    top: 2%;
+    text-align: center;
+ }
+
+ .hide {
+    display: none;
+ }
+
+ .waitDisplay {
+    position: relative;
+    top: 325px;
+    color: white;
+    font-size:50px;
+    text-align: center;
+    grid-area: ingredients;
+ }
+
+ #main {
+    grid-area: Main;
  }
 
  .navbar {
     display: flex;
     align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, var(--primary), var(--quaternary));
+ }
+
+ .list-group{
+    max-height: 1000px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.list-group-item {
+    padding: 30px 10px;
+    color: white;
+    background-color: var(--primary);
+}
+
+ .hidden {
+    opacity: 0;
+    filter: blur(7px);
+    transform: translateX(-100%);
+    transition: all 1s;
+ }
+
+ .show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0%);
  }
