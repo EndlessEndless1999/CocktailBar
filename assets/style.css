@@ -1,3 +1,10 @@
+.img {
+    width: 400px;
+    float: right;
+    border-radius: 200px;
+    margin-right: 250px;
+    margin-top: 250px;
+}
 /* brand colour palette */ 
 :root {
     --primary: #2f4454;
@@ -7,7 +14,304 @@
     --quinary: #1c3334;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .selector-for-some-widget {
     box-sizing: content-box;
 }
 
+
+.logo {
+        color: #DA7B93;
+        font-size: 35px;
+        font-family: Arial;
+        padding-left: 20px;
+        float: left;
+        padding-top: 10px;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: arial;
+    height: auto;
+    text-align: left;
+    padding-left: 20px;
+    line-height: 30px;
+    text-align: justify;
+    color: white;
+}
+.par {
+    font-size: 20px;
+    text-align: left;
+    color: white;
+}
+.content {
+    align-items: center;
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    position: relative;
+    margin-top: 300px;
+}
+.content .par{
+    padding-left:20px;
+    padding-bottom: 25px;
+    font-family: Arial;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+}
+.content h1 {
+    font-family: Arial;
+    padding-left: 20px;
+    margin-top: 9%;
+    letter-spacing: 2px;
+}
+.content .cn{
+    background: #DA7B93;
+    border: none;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.badge {
+    background-color: var(--quaternary);
+    color: white;
+}
+
+.cocktailBadge {
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+    left: 70px;
+}
+
+.ingredientsBadge {
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+    left: 30px;
+}
+
+.stepsBadge {
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+    left: 75px;
+}
+
+.button {
+    margin: 0.5em;
+    border-radius: 50%;
+    border: none;
+    height: 2.5em;
+    width: 2.5em;
+    outline: none;
+    background: #DA7B93;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.cn {
+    border: none;
+    outline: none;
+    padding: 0.5em 1em;
+    border-radius: 24px;
+    color: white;
+    font-family: Arial;
+    font-size: 120%;
+}
+.button:hover {
+    background: #7c7c7c6b;
+}
+ .placeholder {
+    color: white;
+ }
+
+ .img {
+    position: relative;
+    bottom: 75px;
+    left: 75px;
+ }
+
+ .shadow {
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.8);
+}
+
+
+ .heroHeader {
+    position: relative;
+    bottom: 40px;
+
+ }
+
+ .gridcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    'Hero Hero Hero Hero'
+    'Main Main Main Main'
+    'Favourites Favourites Favourites Favourites'
+    'Footer Footer Footer Footer'
+    ;
+ }
+
+ .favouritesContainer {
+   grid-area: Favourites;
+ }
+
+ .footer {
+   grid-area: Footer;
+   background-color: #376e6f;
+ }
+
+ .body {
+    grid-area: Hero;
+ }
+
+ .drinks {
+    background-color: var(--quaternary);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    'space1 mytable mytable mytable mytable mytable space2'
+    'space1 mytable mytable mytable mytable mytable space2'
+    ;
+ }
+
+ .displayTable {
+    width: 100%;
+    height: 100%;
+    grid-area: mytable;
+    display: grid;
+    background-color: var(--quaternary);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+    'name ingredients steps '
+    ;
+    border-radius: 7% 7% 0% 0%;
+ }
+ .space {
+    grid-area: space1;
+    background-color: #376e6f;
+    width: 100%;
+    height: 100%;
+ }
+
+ .space2 {
+    grid-area: space2;
+    background-color: #376e6f;
+    width: 100%;
+    height: 100%;
+ }
+
+ .name {
+    grid-area: name;
+ }
+
+ .ingredients {
+    grid-area: ingredients;
+ }
+
+ .steps {
+    grid-area: steps;
+ }
+
+ .cocktailH2 {
+    color: white;
+    background-color: var(--teritary);
+    position: relative;
+    top: 2%;
+    text-align: center;
+ }
+
+ .ingredientsH2 {
+    color: white;
+    background-color: var(--teritary);
+    position: relative;
+    top: 2%;
+    text-align: center;
+ }
+
+ .stepsH2 {
+    color: white;
+    background-color: var(--teritary);
+    position: relative;
+    top: 2%;
+    text-align: center;
+ }
+
+ .hide {
+    display: none;
+ }
+
+ .waitDisplay {
+    position: relative;
+    top: 325px;
+    color: white;
+    font-size:50px;
+    text-align: center;
+    grid-area: ingredients;
+ }
+
+ #main {
+    grid-area: Main;
+ }
+
+ .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, var(--primary), var(--quaternary));
+ }
+
+ .list-group{
+    max-height: 1000px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.list-group-item {
+    padding: 30px 10px;
+    color: white;
+    background-color: var(--primary);
+}
+
+ .hidden {
+    opacity: 0;
+    filter: blur(7px);
+    transform: translateX(-100%);
+    transition: all 1s;
+ }
+
+ .show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0%);
+ }
+
+.favorite {
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    display: block;
+    background-color: var(--teritary);
+    border: 2px solid white;
+}
+
+.favorite.type2 {
+    background-color: var(--quaternary);
+}
+
+.favorite:hover {
+    cursor:hand;
+    cursor: pointer;
+}

@@ -168,5 +168,69 @@ function displayDrinkAmount(drink){
     </p>
     `)
     });
+};
+
+let favorites = JSON.parse(localStorage.getItem('favouriteDrinks')) || [];
+
+favorites.forEach(function(favorite) {
+    document.getElementById(favorite).className = 'fav';
+});
+// register click event listener
+document.querySelector('.list').addEventListener('click', function(e) {
+  var id = e.target.id,
+      item = e.target,
+      index = favorites.indexOf(id);
+  // return if target doesn't have an id 
+  if (!id) return;
+  // item is not favorite
+  if (index == -1) {
+    favorites.push(id);
+    item.className = 'fav';
+  // item is already favorite
+  } else {
+    favorites.splice(index, 1);
+    item.className = '';
+  }
+  // store array in local storage
+localStorage.setItem('favorites', JSON.stringify(favorites));
+});
+
+
+// ***
+
+// create array to store favourite drinks
+const favouriteDrinks = ["Margarita", "Amaretto"]
+console.log(favouriteDrinks);
+
+// add localStorage 
+
+window.localStorage.setItem('favouriteDrinks', JSON.stringify(favouriteDrinks));
+// To retrieve a user key
+window.localStorage.getItem('favouriteDrinks');
+
+let input = localStorage.getItem('favouriteDrinks')
+
+function returnText() {
+    input = document.getElementById("favouriteDrinks").value
+    localStorage.setItem('favouriteDrinks', input)
+    alert(input)
 }
-;
+
+
+
+
+// Basic object syntax
+const person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 50,
+    city: "Manchester"
+  };
+  const keys = Object.keys(person);
+
+  console.log(person);
+// click button 
+
+  addEventListener('click', (event) => {});
+
+  onclick = (event) => { };
