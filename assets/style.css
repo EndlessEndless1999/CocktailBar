@@ -14,6 +14,10 @@
     --quinary: #1c3334;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .selector-for-some-widget {
     box-sizing: content-box;
 }
@@ -73,6 +77,33 @@ h1 {
     cursor: pointer;
     transition: 0.4s ease-in-out;
 }
+
+.badge {
+    background-color: var(--quaternary);
+    color: white;
+}
+
+.cocktailBadge {
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+    left: 70px;
+}
+
+.ingredientsBadge {
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+    left: 30px;
+}
+
+.stepsBadge {
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+    left: 75px;
+}
+
 .button {
     margin: 0.5em;
     border-radius: 50%;
@@ -148,12 +179,12 @@ h1 {
     height: 100%;
     grid-area: mytable;
     display: grid;
-    background-color: var(--secondary);
+    background-color: var(--quaternary);
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
     'name ingredients steps '
     ;
-    border-radius: 7% 7% 7% 7%;
+    border-radius: 7% 7% 0% 0%;
  }
  .space {
     grid-area: space1;

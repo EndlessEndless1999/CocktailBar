@@ -11,30 +11,50 @@
     <script src="https://kit.fontawesome.com/f42108bf4b.js" crossorigin="anonymous"></script>
 </head>
 <body>   
-<header class="navbar">
-    <nav class="navbar-expand-sm">
-        <div class="container" id="navbarcontainer">
-            <a href="#" class="d-inline-block navbar-brand mb-0 h1">Navbar</a>
-            <button
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            class="navbar-toggler"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle naviation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active fa-solid fa-house"><a href="#" class="nav-link"></a></li>
-                <li class="nav-item active fa-solid fa-magnifying-glass"><a href="#" class="nav-link"></a></li>
-                <li class="nav-item active fa-solid fa-flask"><a href="#" class="nav-link"></a></li>
-                <li class="nav-item active fa-solid fa-user"><a href="#" class="nav-link"></a></li>
-            </ul>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
+            <div class="container" id="navbarcontainer"> 
+                <a href="#" class="d-inline-block" 
+                class="navbar-brand mb-0 h1">Navbar</a>
+                <button
+                type="button" 
+                data-toggle="collapse" 
+                data-target="#navbarNav" 
+                class="navbar-toggler"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle naviation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link active">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" 
+                        id="navbarDropdown" 
+                        role="button" 
+                        data-toggle="dropdown" 
+                        aria-expanded="false">
+                        Favourites</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a href="#"
+                            class="dropdown-item">Based on recents</a></li>
+                            <li><a href="#"
+                            class="dropdown-item">Based on allergens</a></li>
+                            <li><a href="#"
+                            class="dropdown-item">Try in local bar</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="#display" class="nav-link">Dashboard</a></li>
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">About</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 </header>
 <div class="gridcontainer">
     <div style="background-color: #376e6f;" class="body">
@@ -58,10 +78,10 @@
     </div>
     <div class="drinks" id="main">
         <div class="space"></div>
-        <div class="displayTable shadow">
+        <div class="displayTable shadow" id="display">
             <div class="waitDisplay">Search for a Cocktail Above!</div>
-            <div class="name hide">
-                <h2 class="cocktailH2">Cocktail:</h2>
+            <div class="name hide hidden">
+                <span class="badge rounded-pill cocktailBadge">Cocktail:</span>
                 <ul class="list-group">
                     <li class="list-group-item">Cras justo odio</li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -104,8 +124,8 @@
                     <li class="list-group-item">Vestibulum at eros</li>
                 </ul>
             </div>
-            <div class="ingredients hide">
-                <h2 class="ingredientsH2">Ingredients:</h2>
+            <div class="ingredients hide hidden">
+                <span class="badge rounded-pill ingredientsBadge">Ingredients:</span>
                 <ul class="list-group">
                     <li class="list-group-item">Cras justo odio</li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -143,8 +163,8 @@
                     <li class="list-group-item">Vestibulum at eros</li>
                 </ul>
             </div>
-            <div class="steps hide">
-                <h2 class="stepsH2">Steps:</h2>
+            <div class="steps hide hidden">
+                <span class="badge rounded-pill stepsBadge">Steps:</span>
                 <ul class="list-group">
                     <li class="list-group-item">Cras justo odio</li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>

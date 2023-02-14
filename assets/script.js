@@ -147,6 +147,7 @@ function generateDrink(){
     $('.name').removeClass('hide');
     $('.ingredients').removeClass('hide');
     $('.steps').removeClass('hide');
+    document.getElementById('display').scrollIntoView();
 }
 
 function displayDrinkInfo(){
