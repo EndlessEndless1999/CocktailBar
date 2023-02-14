@@ -156,7 +156,18 @@ h1 {
     grid-template-areas: 
     'Hero Hero Hero Hero'
     'Main Main Main Main'
+    'Favourites Favourites Favourites Favourites'
+    'Footer Footer Footer Footer'
     ;
+ }
+
+ .favouritesContainer {
+   grid-area: Favourites;
+ }
+
+ .footer {
+   grid-area: Footer;
+   background-color: #376e6f;
  }
 
  .body {
