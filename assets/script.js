@@ -248,6 +248,13 @@ $('.button').on('click', function(){
 })
 
 function generateDrink(){
+
+    $('#ingredientsList').empty();
+    $('#stepsList').empty();
+    $('#cocktailList').empty();
+
+
+
     $('.waitDisplay').addClass('hide');
     $('.name').removeClass('hide');
     $('.ingredients').removeClass('hide');
