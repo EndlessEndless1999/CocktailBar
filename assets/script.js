@@ -129,3 +129,40 @@ function displayDrinkAmount(drink){
     });
 }
 ;
+// ***
+
+// create array to store favourite drinks
+const favouriteDrinks = ["Margarita", "Amaretto"]
+console.log(favouriteDrinks);
+
+// add localStorage 
+
+window.localStorage.setItem('favouriteDrinks', JSON.stringify(favouriteDrinks));
+// To retrieve a user key
+window.localStorage.getItem('favouriteDrinks');
+
+let input = localStorage.getItem('favouriteDrinks')
+
+function returnText() {
+  input = document.getElementById("favouriteDrinks").value
+  localStorage.setItem('favouriteDrinks', input)
+  alert(input)
+}
+
+
+
+// Basic object syntax
+const person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 50,
+    city: "Manchester"
+  };
+  const keys = Object.keys(person);
+
+  console.log(person);
+// click button 
+
+  addEventListener('click', (event) => {});
+
+  onclick = (event) => { };
