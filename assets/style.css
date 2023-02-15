@@ -334,6 +334,11 @@ h1 {
    z-index: 1;
 }
 
+.busBadge {
+   position: relative;
+   right: 1000px
+}
+
  .hidden {
     opacity: 0;
     filter: blur(7px);

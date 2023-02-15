@@ -9,7 +9,7 @@ let longitude = '-0.13721928010098072';
 
 
 //STORE CITY HERE
-let userAdress = '44 Cheapside Brighton BN1 4GD';
+let userAdress = 'London';
 
 let results;
 const tags = ["modern"];
@@ -399,11 +399,30 @@ function getCoord(){
   $.ajax(addressSettings.adrToCoordinates).then(function(response){
     longitude = response.Results[0].longitude;
     latitude = response.Results[0].latitude;
+    displayBusinesses();
   });
 
+  
 
 }
-getCoord();
+
+
+function displayBusinesses(){
+  localBusinessSettings.url = "https://local-business-data.p.rapidapi.com/search?query=" + "barsin" + userAdress + "&limit=5&lat=" + latitude + "&lng=" + longitude + "&zoom=13&region=en&language=en"
+  $.ajax(localBusinessSettings).then(function(response){
+    console.log(response);
+    let myBusinesses = response.data;
+    for(let i = 0; i < myBusinesses.length; i++){
+      let d = document.createElement('li');
+      let a = document.createElement('a');
+      d.classList.add('list-group-item');
+      a.innerHTML = myBusinesses[i].name;
+      a.setAttribute('href', myBusinesses[i].website);
+      d.appendChild(a);
+      $('#barList').append(d); 
+    }
+  })
+}
 // ***
 
 // create array to store favourite drinks
