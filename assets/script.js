@@ -3,10 +3,12 @@ let searchedDrink = '';
 let ingredient = 'milk';
 let drinkResults;
 
-let barSearch = 'bar';
+let barSearch = 'bars in';
 let latitude = '50.82953728381789';
 let longitude = '-0.13721928010098072';
 
+
+//STORE CITY HERE
 let userAdress = '44 Cheapside Brighton BN1 4GD';
 
 let results;
@@ -198,13 +200,13 @@ const allergenAPISettings = {
 }
 
 const localBusinessSettings = {
-    search: { "async": true,
-	"crossDomain": true,
-	"url": "https://local-business-data.p.rapidapi.com/search?query=" + barSearch + '&limit=20' + '&lat=' + latitude + '&lng=' + longitude + '&zoom=13&region=en&language=en',
-	"method": "GET",
-	"headers": {
-		"X-RapidAPI-Key": "776d092347msh3e7fd81bb3c4eaap19f0c5jsn6f3d75095a68",
-		"X-RapidAPI-Host": "local-business-data.p.rapidapi.com"}
+      "async": true,
+    	"crossDomain": true,
+    	"url": "https://local-business-data.p.rapidapi.com/search?query=" + "hotels%20in%20" + userAdress + "&limit=5&lat=" + latitude + "&lng=" + longitude + "&zoom=13&region=en&language=en",
+    	"method": "GET",
+    	"headers": {
+  		"X-RapidAPI-Key": "f1d9958e26msh5fddfc971927676p1e2fe1jsnb12fc0647069",
+  		"X-RapidAPI-Host": "local-business-data.p.rapidapi.com"
     }
 }
 
@@ -342,7 +344,7 @@ function displayDrinkInfo(drink){
     let garnish = drink.garnish;
 
     drinks.append (`
-    <li class = "list-group-item tt" data-bs-placement = "top" title= "${name}">${name}
+    <li class = "list-group-item tt" id = "myDrink" data-bs-placement = "top" title= "${name}">${name}
     </li>
     `);
     drinks.append (`
@@ -359,6 +361,8 @@ function displayDrinkInfo(drink){
     `);
     updatePage();
     displaySteps(drink);
+
+
 }
 
 function displayDrinkAmount(response){
@@ -386,6 +390,20 @@ function displaySteps(drink){
     });
     updatePage();
 }
+
+
+//ADRESS FUNCTIONS
+
+function getCoord(){
+  addressSettings.adrToCoordinates.url = "https://address-from-to-latitude-longitude.p.rapidapi.com/geolocationapi?address=" + userAdress;
+  $.ajax(addressSettings.adrToCoordinates).then(function(response){
+    longitude = response.Results[0].longitude;
+    latitude = response.Results[0].latitude;
+  });
+
+
+}
+getCoord();
 // ***
 
 // create array to store favourite drinks
