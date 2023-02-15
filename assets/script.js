@@ -208,24 +208,24 @@ favButton.addEventListener('click', () => {
     favButton.classList.toggle('active');
 })
 
-$('.favButton').on('click', event => {
-    let favButton = $(event.target).parents()[1].favouriteDrinks;
+// $('.favButton').on('click', event => {
+//     let favButton = $(event.target).parents()[1].favouriteDrinks;
 
-    let favouriteDrinks = localStorage.getItem("favouriteDrinks");
-    if (!favouriteDrinks){
-        localStorage.setItem("favouriteDrinks", JSON.stringify({stores:[]}));
-        favouriteDrinks = JSON.parse(localStorage.getItem("favouriteDrinks"));
-    }else{
-        favouriteDrinks = JSON.parse(favouriteDrinks);
-    }
+//     let favouriteDrinks = localStorage.getItem("favouriteDrinks");
+//     if (!favouriteDrinks){
+//         localStorage.setItem("favouriteDrinks", JSON.stringify({stores:[]}));
+//         favouriteDrinks = JSON.parse(localStorage.getItem("favouriteDrinks"));
+//     }else{
+//         favouriteDrinks = JSON.parse(favouriteDrinks);
+//     }
     
-    favouriteDrinks.stores.push(favouriteDrinksTable);
+//     favouriteDrinks.stores.push(favouriteDrinksTable);
 
-    localStorage.setItem("favouriteDrinks", JSON.stringify(favouriteDrinksTable));
-});
+//     localStorage.setItem("favouriteDrinks", JSON.stringify(favouriteDrinksTable));
+// });
 
 
-<input id="favButton" type="button" value="click" onclick="push(); toggle();"/>
+{/* <input id="favButton" type="button" value="click" onclick="push(); toggle();"/> */}
 
 // Basic object syntax
 const person = {
