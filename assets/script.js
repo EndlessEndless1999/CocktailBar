@@ -185,9 +185,9 @@ window.localStorage.getItem('favouriteDrinks');
 let input = localStorage.getItem('favouriteDrinks')
 
 function returnText() {
-  input = document.getElementById("favouriteDrinks").value
-  localStorage.setItem('favouriteDrinks', input)
-  alert(input)
+    input = document.getElementById("favouriteDrinks").value
+    localStorage.setItem('favouriteDrinks', input)
+    alert(input)
 }
 
 $('.circle').on('click', function(){
@@ -202,30 +202,28 @@ $('.circle').on('click', function(){
 })
 
 // Favorite button 
-let favButton = document.querySelector('.favButton');
+$('.favButton').on('click', event => {
+        let favButton = $(event.target).parents()[1].favouriteDrinks;
+        
+        let favouriteDrinks = localStorage.getItem("favouriteDrinks");
+        if (!favouriteDrinks){
+            localStorage.setItem("favouriteDrinks", JSON.stringify([]));
+            favouriteDrinks = JSON.parse(localStorage.getItem("favouriteDrinks"));
+        }
 
-favButton.addEventListener('click', () => {
-    favButton.classList.toggle('active');
-})
+        myDrink = $('#myDrink').text();
 
-// $('.favButton').on('click', event => {
-//     let favButton = $(event.target).parents()[1].favouriteDrinks;
+        favouriteDrinks.push('myDrink');
+    })
 
-//     let favouriteDrinks = localStorage.getItem("favouriteDrinks");
-//     if (!favouriteDrinks){
-//         localStorage.setItem("favouriteDrinks", JSON.stringify({stores:[]}));
-//         favouriteDrinks = JSON.parse(localStorage.getItem("favouriteDrinks"));
-//     }else{
-//         favouriteDrinks = JSON.parse(favouriteDrinks);
-//     }
-    
-//     favouriteDrinks.stores.push(favouriteDrinksTable);
+        // Button animation
+// let favButton = document.querySelector('.favButton');
 
-//     localStorage.setItem("favouriteDrinks", JSON.stringify(favouriteDrinksTable));
-// });
+// favButton.addEventListener('click', () => {
+//     favButton.classList.toggle('active');
+// })
 
 
-{/* <input id="favButton" type="button" value="click" onclick="push(); toggle();"/> */}
 
 // Basic object syntax
 const person = {
