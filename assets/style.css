@@ -285,3 +285,55 @@ h1 {
     filter: blur(0);
     transform: translateX(0%);
  }
+ .footer-content {
+   background: #376e6f;
+   height: auto;
+   width: 100vw;
+   font-family: arial;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   text-align: center;
+}
+.footer-content h3 {
+   color: #DA7B93;
+   font-size: 1.8rem;
+   font-weight: 400;
+   text-transform: capitalize;
+   line-height: 3rem;
+   font-size: 35px;
+
+}
+ul.socials {
+   list-style: none;
+   display: inline-flex;
+   align-items: center;
+   margin: 1rem 0 3rem 0;
+   font-size: 20px;
+}
+p.par-footer {
+   font-size: 20px;
+   margin-top: 10px;
+   color: white;
+   padding-left: 180px;
+   padding-right: 180px;
+   letter-spacing: 1px;
+}
+ul.socials a:hover i {
+   color: #DA7B93;
+   text-decoration: none;
+}
+.ul.socials {
+color: white;
+}
+
+.footer-bottom {
+   color: white;
+   font-size: 20px;
+}
+a.ex2:hover, a.ex2:active {
+   font-size: 150%;
+   text-decoration: none;
+   transition: 2s;
+   transition-duration: 3s;
+}
