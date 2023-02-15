@@ -10,6 +10,7 @@ let longitude = '-0.13721928010098072';
 let userAdress = '44 Cheapside Brighton BN1 4GD';
 
 let results;
+const tags = ["modern"];
 
 let sampleObject = [
     {
@@ -171,6 +172,16 @@ let Settings = {
 		    "X-RapidAPI-Key": "776d092347msh3e7fd81bb3c4eaap19f0c5jsn6f3d75095a68",
 		    "X-RapidAPI-Host": "drinks-digital1.p.rapidapi.com"
 	    }
+    },
+    suggest : {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://drinks-digital1.p.rapidapi.com/v1/cocktails/tags?filters=" + tags + "&limit=20",
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Key": "776d092347msh3e7fd81bb3c4eaap19f0c5jsn6f3d75095a68",
+            "X-RapidAPI-Host": "drinks-digital1.p.rapidapi.com"
+        }
     }
 
 };
@@ -255,6 +266,12 @@ $('#searchButton').on('click', function(){
 
 $('#random').on('click', function(){
     Settings.search.url = "https://drinks-digital1.p.rapidapi.com/v1/cocktails?limit=20"
+
+    generateRandomDrink();
+})
+
+$('#suggest').on('click', function(){
+    Settings.search.url = "https://drinks-digital1.p.rapidapi.com/v1/cocktails/tags?filters=" + tags[0] + "&limit=20"
 
     generateRandomDrink();
 })
@@ -373,6 +390,7 @@ function displaySteps(drink){
 
 // create array to store favourite drinks
 const favouriteDrinks = ["Margarita", "Espresso Martini"]
+
 console.log(favouriteDrinks);
 
 // add localStorage 
