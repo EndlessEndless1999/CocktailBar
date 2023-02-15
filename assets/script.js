@@ -1,5 +1,5 @@
 
-let searchedDrink = '20th Century';
+let searchedDrink = '';
 let ingredient = 'milk';
 let drinkResults;
 
@@ -8,6 +8,104 @@ let latitude = '50.82953728381789';
 let longitude = '-0.13721928010098072';
 
 let userAdress = '44 Cheapside Brighton BN1 4GD';
+
+let results;
+const tags = ["modern"];
+
+let sampleObject = [
+    {
+      id: "ea43ffb8500c4bc8a32faffa",
+      spirit_id: "gin",
+      cocktail_name: "20th Century",
+      description: "The 20th Century Cocktail made with gin, Lillet blanc, white creme de cacao and lemon juice. According to the book \"Cafe Royal Cocktail Book\" by William J. Tarling, The cocktail was created by British bartender C.A. Tuck and named for the luxurious 20th Century Limited passenger train that ran between New York City and Chicago from 1902 to 1967.",
+      additional_tips: "",
+      alcoholic: true,
+      garnish: "lemon twist",
+      ingredients: [
+        {
+          list_order: 1,
+          amount: "1 1/2 ounces (45ml)",
+          ingredient: {
+            name: "gin",
+            description: "Gin is a distilled alcoholic drink that derives its predominant flavor from juniper berries.",
+            id: "gin"
+          }
+        },
+        {
+          list_order: 2,
+          amount: "1/2 ounce (15ml)",
+          ingredient: {
+            name: "Lillet blanc",
+            description: "Lillet is a French wine-based aperitif from Podensac. Classed as an aromatised wine Lillet Blanc a sweeter variant of the white-wine-based version with reduced quinine content.",
+            id: "lilletblanc"
+          }
+        },
+        {
+          list_order: 3,
+          amount: "1/2 ounce (15ml)",
+          ingredient: {
+            name: "white creme de cacao",
+            description: "Crème de Cacao is a sweet alcoholic liqueur (chocolate bean) flavored liqueur, often scented with a hint of vanilla. It is different from chocolate liqueur, which is usually sweeter and more syrupy. It comes in 2 varieties, dark and white.",
+            id: "whitecremedecacao"
+          }
+        },
+        {
+          list_order: 4,
+          amount: "3/4 ounce (22.5ml)",
+          ingredient: {
+            name: "lemon juice",
+            description: "Lemon juice is made from freshly squeezed lemons.",
+            id: "lemonjuice"
+          }
+        }
+      ],
+      steps: [
+        {
+          step: 1,
+          instructions: "Add the gin, Lillet blanc, white creme de cacao and lemon juice to a shaker with ice and shake until well-chilled."
+        },
+        {
+          step: 2,
+          instructions: "Fine-strain into a chilled coupe."
+        },
+        {
+          step: 3,
+          instructions: "Garnish with a lemon twist."
+        }
+      ],
+      glasses: [
+        {
+          list_order: 1,
+          glass: {
+            name: "Champagne Saucer (Coupe)",
+            description: "The Champagne saucer is also called a coupe glass. With a flatter, rounder bowl, it is a more traditional glass design for serving sparkling wines. It holds around 6 to 8 ounces.",
+            image_url: "https://rapid.drinks.digital/static/coupe.png",
+            id: "coupe"
+          }
+        },
+        {
+          list_order: 2,
+          glass: {
+            name: "Cocktail (or Martini) Glass",
+            description: "The familiar conical shape of the cocktail glass makes most people think of a martini. Cocktail glasses are used for drinks between 3 and 6 ounces. Cocktail glasses are also a good alternative to margarita glasses.",
+            image_url: "https://rapid.drinks.digital/static/cocktail.png",
+            id: "cocktail"
+          }
+        }
+      ],
+      tags: [
+        {
+          list_order: 1,
+          tag: {
+            id: "dessert",
+            name: "Dessert Cocktails"
+          }
+        }
+      ],
+      created_at: "2022-12-04T02:31:08.290136+00:00",
+      updated_at: null
+    }
+  ]
 
 //Variables for animating the website
 const animatedElements = document.querySelectorAll('.hidden');
@@ -19,6 +117,16 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 });
+
+//Tooltips Scripting
+
+
+function updatePage(){
+    const tooltips = document.querySelectorAll('.tt');
+    tooltips.forEach(t => {
+    new bootstrap.Tooltip(t);
+})
+}
 
 animatedElements.forEach((el) => observer.observe(el));
 
@@ -44,7 +152,7 @@ let drink = {
 }
 
 //At the moment this gets many cocktails.
-const Settings = {
+let Settings = {
     default : {
         "async": true,
         "crossDomain": true,
@@ -64,6 +172,16 @@ const Settings = {
 		    "X-RapidAPI-Key": "776d092347msh3e7fd81bb3c4eaap19f0c5jsn6f3d75095a68",
 		    "X-RapidAPI-Host": "drinks-digital1.p.rapidapi.com"
 	    }
+    },
+    suggest : {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://drinks-digital1.p.rapidapi.com/v1/cocktails/tags?filters=" + tags + "&limit=20",
+        "method": "GET",
+        "headers": {
+            "X-RapidAPI-Key": "776d092347msh3e7fd81bb3c4eaap19f0c5jsn6f3d75095a68",
+            "X-RapidAPI-Host": "drinks-digital1.p.rapidapi.com"
+        }
     }
 
 };
@@ -138,42 +256,141 @@ function test(){
     callAddressAPI();
 }
 
-$('.button').on('click', function(){
+$('#searchButton').on('click', function(){
+    searchedDrink = $('#searchBar').val();
+    Settings.search.url = "https://drinks-digital1.p.rapidapi.com/v1/cocktails/search?query=" + searchedDrink + "&limit=1"
+    console.log(Settings.search.url);
+
     generateDrink();
 })
 
-function generateDrink(){
+$('#random').on('click', function(){
+    Settings.search.url = "https://drinks-digital1.p.rapidapi.com/v1/cocktails?limit=20"
+
+    generateRandomDrink();
+})
+
+$('#suggest').on('click', function(){
+    Settings.search.url = "https://drinks-digital1.p.rapidapi.com/v1/cocktails/tags?filters=" + tags[0] + "&limit=20"
+
+    generateRandomDrink();
+})
+
+function generateRandomDrink(){
+
+    $('#ingredientsList').empty();
+    $('#stepsList').empty();
+    $('#cocktailList').empty();
+
+
+
     $('.waitDisplay').addClass('hide');
     $('.name').removeClass('hide');
     $('.ingredients').removeClass('hide');
     $('.steps').removeClass('hide');
     document.getElementById('display').scrollIntoView();
-}
 
-function displayDrinkInfo(){
-    $.ajax(Settings.search).done(function (response) {
+    $.ajax(Settings.search).then(function (response) {
         console.log(response);
-        response.forEach(function(drink){
-            displayDrinkAmount(drink);
-        })
+        i = getRandomArbitrary(1, 19);
+        console.log(i);
+        console.log(response[i]);
+        displayDrinkAmount(response[i]);
     });
 }
 
-function displayDrinkAmount(drink){
-    var drinks = $(".drinks")
-    drink.ingredients.forEach(ingredient => {
+function getRandomArbitrary(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateDrink(){
+
+    $('#ingredientsList').empty();
+    $('#stepsList').empty();
+    $('#cocktailList').empty();
+
+
+
+    $('.waitDisplay').addClass('hide');
+    $('.name').removeClass('hide');
+    $('.ingredients').removeClass('hide');
+    $('.steps').removeClass('hide');
+    document.getElementById('display').scrollIntoView();
+
+    $.ajax(Settings.search).then(function (response) {
+        console.log(response);
+        displayDrinkAmount(response[0]);
+    });
+
+
+}
+
+function displayDrinkInfo(drink){
+    // $.ajax(Settings.search).done(function (response) {
+    //     console.log(response);
+    //     response.forEach(function(drink){
+    //         displayDrinkAmount(drink);
+    //     })
+    // });
+    var drinks = $("#cocktailList");
+
+    let name = drink.cocktail_name;
+    let description = drink.description;
+    let alcoholic = drink.alcoholic;
+    let garnish = drink.garnish;
+
+    drinks.append (`
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${name}">${name}
+    </li>
+    `);
+    drinks.append (`
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${description}">${description}
+    </li>
+    `);
+    drinks.append (`
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${alcoholic}">${alcoholic}
+    </li>
+    `);
+    drinks.append (`
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${garnish}">${garnish}
+    </li>
+    `);
+    updatePage();
+    displaySteps(drink);
+}
+
+function displayDrinkAmount(response){
+    var drinks = $("#ingredientsList");
+    response.ingredients.forEach(ingredient => {
         console.log(ingredient.amount, ingredient.ingredient.name)
         drinks.append (`
-    <p>${ingredient.amount} of ${ingredient.ingredient.name}
-    </p>
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${ingredient.ingredient.name}">${ingredient.amount} of ${ingredient.ingredient.name}
+    </li>
     `)
     });
+    updatePage();
+    displayDrinkInfo(response);
 }
 ;
+
+function displaySteps(drink){
+    var drinks = $("#stepsList");
+    drink.steps.forEach(step => {
+        console.log(step.step, step.decription);
+        drinks.append (`
+    <li class = "list-group-item tt" data-bs-placement = "top" title= "${step.step}">${step.step}: ${step.instructions}
+    </li>
+    `)
+    });
+    updatePage();
+}
 // ***
 
 // create array to store favourite drinks
-const favouriteDrinks = ["Margarita", "Amaretto"]
+const favouriteDrinks = ["Margarita", "Espresso Martini"]
+
 console.log(favouriteDrinks);
 
 // add localStorage 
@@ -190,7 +407,27 @@ function returnText() {
   alert(input)
 }
 
+$('.circle').on('click', function(){
+    for(let i = 0; i < favouriteDrinks.length; i++){
+        let d = document.createElement('li');
+        d.classList.add('list-group-item');
+        d.innerHTML = favouriteDrinks[i];
+        d.addEventListener('click', function(){
+        searchedDrink = d.innerHTML;
 
+        Settings.search.url = "https://drinks-digital1.p.rapidapi.com/v1/cocktails/search?query=" + searchedDrink + "&limit=1"
+        console.log(Settings.search.url);
+
+        generateDrink();
+        })
+
+        $('#favouritesList').append(d);
+    }
+    $('.favouriteDrinksTable').removeClass('hide');
+    $('.circle').addClass('hidden');
+
+
+})
 
 // Basic object syntax
 const person = {
@@ -207,3 +444,5 @@ const person = {
   addEventListener('click', (event) => {});
 
   onclick = (event) => { };
+  
+  callAPI();
