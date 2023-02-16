@@ -339,6 +339,14 @@ h1 {
    right: 1000px
 }
 
+.utilBadge {
+   background-color: #DA7B93;
+   color: white;
+   height: 75px;
+   width: 500px;
+   text-align: center;
+}
+
  .hidden {
     opacity: 0;
     filter: blur(7px);

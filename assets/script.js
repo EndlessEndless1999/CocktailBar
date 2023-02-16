@@ -161,7 +161,7 @@ let Settings = {
         "url": "https://drinks-digital1.p.rapidapi.com/v1/cocktails?limit=20",
         "method": "GET",
         "headers": {
-            "X-RapidAPI-Key": "776d092347msh3e7fd81bb3c4eaap19f0c5jsn6f3d75095a68",
+            "X-RapidAPI-Key": "f1d9958e26msh5fddfc971927676p1e2fe1jsnb12fc0647069",
             "X-RapidAPI-Host": "drinks-digital1.p.rapidapi.com"
         }
     },
@@ -171,7 +171,7 @@ let Settings = {
 	    "url": "https://drinks-digital1.p.rapidapi.com/v1/cocktails/search?query=" + searchedDrink + "&limit=1",
 	    "method": "GET",
 	    "headers": {
-		    "X-RapidAPI-Key": "776d092347msh3e7fd81bb3c4eaap19f0c5jsn6f3d75095a68",
+		    "X-RapidAPI-Key": "f1d9958e26msh5fddfc971927676p1e2fe1jsnb12fc0647069",
 		    "X-RapidAPI-Host": "drinks-digital1.p.rapidapi.com"
 	    }
     },
@@ -181,7 +181,7 @@ let Settings = {
         "url": "https://drinks-digital1.p.rapidapi.com/v1/cocktails/tags?filters=" + tags + "&limit=20",
         "method": "GET",
         "headers": {
-            "X-RapidAPI-Key": "776d092347msh3e7fd81bb3c4eaap19f0c5jsn6f3d75095a68",
+            "X-RapidAPI-Key": "f1d9958e26msh5fddfc971927676p1e2fe1jsnb12fc0647069",
             "X-RapidAPI-Host": "drinks-digital1.p.rapidapi.com"
         }
     }
@@ -285,7 +285,6 @@ function generateRandomDrink(){
     $('#cocktailList').empty();
 
 
-
     $('.waitDisplay').addClass('hide');
     $('.name').removeClass('hide');
     $('.ingredients').removeClass('hide');
@@ -374,6 +373,8 @@ function displayDrinkAmount(response){
     </li>
     `)
     });
+    $('.utilBadge').removeClass('hide');
+    $('.s').removeClass('hide');
     updatePage();
     displayDrinkInfo(response);
 }
@@ -422,6 +423,7 @@ function displayBusinesses(){
       $('#barList').append(d); 
     }
   })
+  $('.space2').removeClass('hide');
 }
 // ***
 
@@ -442,6 +444,22 @@ function returnText() {
   input = document.getElementById("favouriteDrinks").value
   localStorage.setItem('favouriteDrinks', input)
   alert(input)
+}
+
+$('#addFav').on('click', function(){
+  myDrink = $('#myDrink').text();
+  favouriteDrinks.push(myDrink);
+  localStorage.setItem('favouriteDrinks', favouriteDrinks);
+})
+
+$('#showBus').on('click', function(){
+  getLocation();
+})
+
+function getLocation(){
+  var location = prompt('Please enter your city');
+  userAdress = location;
+  getCoord();
 }
 
 $('.circle').on('click', function(){
